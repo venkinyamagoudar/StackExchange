@@ -7,24 +7,28 @@
 
 import UIKit
 
-
-protocol QuestionListingViewControllerDelegate {
+protocol QuestionListViewControllerDelegate {
     func navigateToDetailView()
 }
 
+// This protocols can be only used by refernce types
+//protocol QuestionListViewControllerDelegate: class {
+//    func navigateToDetailView()
+//}
+
 class QuestionListViewController: UIViewController {
     
-    var viewModel: QuestionsListViewModel?
+    var viewModel: QuestionsListViewModel
+    var delegate: QuestionListViewControllerDelegate?
     
-    var delegate: QuestionListingViewControllerDelegate?
+    init(viewModel: QuestionsListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .secondarySystemBackground
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.sizeToFit()
-        return view
-    }()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var questionListingTableviewContainer: UIView = {
         let view = UIView()
@@ -38,6 +42,8 @@ class QuestionListViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .secondarySystemBackground
+        tableView.estimatedRowHeight = 50.0
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.layer.masksToBounds = true
         tableView.layer.cornerRadius = 20
         tableView.isScrollEnabled = true
@@ -47,36 +53,32 @@ class QuestionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
         title = "Question List"
         
-        loadData()
         questionListingTableview.delegate = self
         questionListingTableview.dataSource = self
         
-        view.addSubview(containerView)
-        containerView.addSubview(questionListingTableviewContainer)
+        view.addSubview(questionListingTableviewContainer)
         questionListingTableviewContainer.addSubview(questionListingTableview)
-        setUpConstraints()
         
-        questionListingTableview.register(QuestionTableViewCell.self, forCellReuseIdentifier: "QuestionTableViewCell")
-        questionListingTableview.rowHeight = UITableView.automaticDimension
+        questionListingTableview.register(QuestionListTableViewCell.self, forCellReuseIdentifier: QuestionListTableViewCell.identifier)
+        loadData()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setUpConstraints()
     }
     
     private func setUpConstraints() {
         var constraints = [NSLayoutConstraint]()
         
-        //Add constraints to container
-        constraints.append(containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
-        constraints.append(containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
-        constraints.append(containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor))
-        constraints.append(containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0))
-        
         //Add constraints to stopWatchContainerView
-        constraints.append(questionListingTableviewContainer.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8))
-        constraints.append(questionListingTableviewContainer.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8))
-        constraints.append(questionListingTableviewContainer.widthAnchor.constraint(equalTo: containerView.widthAnchor, constant: -16))
-        constraints.append(questionListingTableviewContainer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,constant: -16))
+        constraints.append(questionListingTableviewContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8))
+        constraints.append(questionListingTableviewContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8))
+        constraints.append(questionListingTableviewContainer.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -16))
+        constraints.append(questionListingTableviewContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -16))
         
         
         //Add constraints to stopWatchTableview
@@ -91,48 +93,40 @@ class QuestionListViewController: UIViewController {
     
     
     private func loadData() {
-        viewModel?.extractJsonData(from: "https://api.stackexchange.com/2.2/questions?site=stackoverflow&order=desc&sort=votes&tagged=swiftui&pagesize=30", completion: { [weak self] result in
-            guard let self = self else {return}
+        viewModel.questionListFetch(completion: { result in
             switch result {
             case .success(let data):
-                self.viewModel?.parseJsonData(jsonData: data) { result in
-                    switch result {
-                    case .success(let jsonData):
-                        self.viewModel?.questionList = jsonData.items
-                    case .failure(let jsonError):
-                        print(jsonError.localizedDescription)
-                    }
+                DispatchQueue.main.async { [weak self] in
+                    self?.viewModel.questionList = data
+                    self?.questionListingTableview.reloadData()
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure(_):
+                fatalError("Error while getting data")
             }
         })
     }
 }
 
-extension QuestionListingViewController: UITableViewDelegate, UITableViewDataSource {
+extension QuestionListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 200
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.questionList.count ?? 0
+        return viewModel.questionList?.items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "QuestionTableViewCell") as! QuestionTableViewCell
-        if var viewModel = viewModel {
-            cell.answerButton.setTitle(String(viewModel.questionList[indexPath.row].answerCount), for: .normal)
-            cell.scoreButton.setTitle(String(viewModel.questionList[indexPath.row].answerCount), for: .normal)
-            cell.seenButton.setTitle(String(viewModel.questionList[indexPath.row].viewCount), for: .normal)
-            cell.quetionLabel.text = viewModel.questionList[indexPath.row].title
-            cell.topicsLabel.text = viewModel.questionList[indexPath.row].tags.joined(separator: ", ")
+        let cell = tableView.dequeueReusableCell(withIdentifier: QuestionListTableViewCell.identifier, for: indexPath) as! QuestionListTableViewCell
+        if let questionList = viewModel.questionList?.items {
+            cell.configure(data: questionList[indexPath.row])
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.delegate?.navigateToDetailView()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

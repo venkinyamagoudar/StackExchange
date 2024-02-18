@@ -6,11 +6,15 @@
 //
 
 import XCTest
+@testable import StackExchange
 
 final class QuestionListViewModelTest: XCTestCase {
-
+    
+    var viewModel: QuestionsListViewModel?
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        viewModel = QuestionsListViewModel(dataManger: MockDataManager())
     }
 
     override func tearDownWithError() throws {
@@ -25,11 +29,17 @@ final class QuestionListViewModelTest: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_questionListFetch_valid_result() {
+        
+        viewModel?.dataManger.getQuestionList(from: "", completion: { result in
+            switch result {
+            case .success(let data):
+                XCTAssertEqual(2, data.items.count)
+            case .failure(_):
+                fatalError("Error while fetching Question List")
+            }
+            
+        })
     }
 
 }

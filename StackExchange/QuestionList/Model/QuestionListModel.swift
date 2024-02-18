@@ -8,7 +8,7 @@
 import UIKit
 
 //MARK: - QuestionList
-struct QuestionList: Codable {
+public struct QuestionList: Codable {
     let items: [Item]
     let hasMore: Bool
     let quotaMax, quotaRemaining: Int

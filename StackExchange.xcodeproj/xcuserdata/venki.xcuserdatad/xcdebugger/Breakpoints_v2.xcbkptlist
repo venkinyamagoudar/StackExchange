@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "157A5FF5-891D-44D9-ABE1-1EFEA9775364"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9706D643-B229-401C-AEB0-C16500C21755"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackExchange/QuestionListing/Controller/QuestionListingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "loadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4733EB0-64EE-4EEB-93B1-212F676F3073"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackExchange/QuestionListing/Controller/QuestionListingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D00253BE-48D5-4BC9-9014-A6870309D5FB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackExchange/QuestionList/ViewModel/QuestionsListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "questionListFetch(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D00253BE-48D5-4BC9-9014-A6870309D5FB - e4fa9e001310dee9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StackExchange.QuestionsListViewModel.questionListFetch(completion: (Swift.Result&lt;StackExchange.QuestionList, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "StackExchange"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/venki/Desktop/Practice/StackExchange/StackExchange/QuestionList/ViewModel/QuestionsListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "D00253BE-48D5-4BC9-9014-A6870309D5FB - c8b5d08f8cf85c28"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;StackExchange.QuestionList, Swift.Error&gt;) -&gt; () in StackExchange.QuestionsListViewModel.questionListFetch(completion: (Swift.Result&lt;StackExchange.QuestionList, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "StackExchange"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/venki/Desktop/Practice/StackExchange/StackExchange/QuestionList/ViewModel/QuestionsListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "118">
+               </Location>
+               <Location
+                  uuid = "D00253BE-48D5-4BC9-9014-A6870309D5FB - 8cbf3a150489d8a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StackExchangeTests.QuestionsListViewModel.questionListFetch(completion: (Swift.Result&lt;StackExchangeTests.QuestionList, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "StackExchangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/venki/Desktop/Practice/StackExchange/StackExchange/QuestionList/ViewModel/QuestionsListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "D00253BE-48D5-4BC9-9014-A6870309D5FB - 166f2e5b9c6af773"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;StackExchangeTests.QuestionList, Swift.Error&gt;) -&gt; () in StackExchangeTests.QuestionsListViewModel.questionListFetch(completion: (Swift.Result&lt;StackExchangeTests.QuestionList, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "StackExchangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/venki/Desktop/Practice/StackExchange/StackExchange/QuestionList/ViewModel/QuestionsListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "118">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4FED05A-0795-497A-9F65-9329905572E0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackExchangeTests/QuestionListTest/QuestionListViewModelTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "test_questionListFetch_valid_result()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B4FED05A-0795-497A-9F65-9329905572E0 - 487fb2a566d8cc56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StackExchangeTests.QuestionListViewModelTest.test_questionListFetch_valid_result() -&gt; ()"
+                  moduleName = "StackExchangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/venki/Desktop/Practice/StackExchange/StackExchangeTests/QuestionListTest/QuestionListViewModelTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  uuid = "B4FED05A-0795-497A-9F65-9329905572E0 - 458ba2f66833b751"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;StackExchangeTests.QuestionList, Swift.Error&gt;) -&gt; () in StackExchangeTests.QuestionListViewModelTest.test_questionListFetch_valid_result() -&gt; ()"
+                  moduleName = "StackExchangeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/venki/Desktop/Practice/StackExchange/StackExchangeTests/QuestionListTest/QuestionListViewModelTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "55">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A09B9AE8-21D1-4C44-8E5B-60503969F388"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackExchangeTests/QuestionListTest/QuestionListViewModelTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "test_questionListFetch_valid_result()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -7,14 +7,13 @@
 
 import Foundation
 
-protocol QuestionListDataManaging {
-    func fetchDataAndParseJson(from urlString: String, completion: @escaping(Result<QuestionList, Error>) -> Void)
+public protocol QuestionListDataManaging {
+    func getQuestionList(from urlString: String, completion: @escaping(Result<QuestionList, Error>) -> Void)
 }
 
 class QuestionListDataManager: QuestionListDataManaging {
     
-    
-    func fetchDataAndParseJson(from urlString: String, completion: @escaping(Result<QuestionList, Error>) -> Void) {
+    func getQuestionList(from urlString: String, completion: @escaping(Result<QuestionList, Error>) -> Void) {
         extractJsonData(from: urlString) {[weak self] result in
             switch result {
             case .success(let data):

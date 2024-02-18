@@ -17,20 +17,25 @@ class QuestionListCoordinator: Coordinator {
     }
     
     func start() {
-        
-        let viewModel = QuestionsListViewModel()
         let dataManager = QuestionListDataManager()
+        let viewModel = QuestionsListViewModel(dataManger: dataManager)
         
-        let questionListController = QuestionListViewController()
-        questionListController.delegate = self
-        questionListController.viewModel = viewModel
+        let questionListController = QuestionListViewController(viewModel: viewModel)
         navigationController.viewControllers = [questionListController]
         navigationController.navigationBar.prefersLargeTitles = true
+        
+        questionListController.delegate = self
+    }
+    
+    func pushToDetailviewController() {
+        let detailQuetionViewCoordinator = DetailQuestionViewCoordinator(navigationController: self.navigationController)
+        childCoordinators.append(detailQuetionViewCoordinator)
+        detailQuetionViewCoordinator.start()
     }
 }
 
 extension QuestionListCoordinator: QuestionListViewControllerDelegate {
     func navigateToDetailView() {
-        
+        pushToDetailviewController()
     }
 }

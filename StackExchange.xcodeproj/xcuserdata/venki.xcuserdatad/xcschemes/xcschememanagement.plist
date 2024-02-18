@@ -6,8 +6,23 @@
 	<dict>
 		<key>StackExchange.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>24047B1A2A1D32E90062AF85</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24047B502A1D90C20062AF85</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
